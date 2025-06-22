@@ -1,0 +1,123 @@
+@page "/dishes/{DishId:int}"
+@inject DishService DishService
+@inject UserService UserService
+
+<h2 class="mb-4 text-primary fw-bold">@dish?.Name</h2>
+
+@if (dish != null)
+{
+    <div class="row mb-4">
+        <div class="col-md-4 mb-3">
+            @if (!string.IsNullOrEmpty(dish.ImagePath))
+            {
+                <img src="@dish.ImagePath" alt="@dish.Name" class="img-fluid rounded shadow-sm" />
+            }
+        </div>
+        <div class="col-md-8">
+            <p class="lead">@dish.Description</p>
+            <p><strong>Price:</strong> @dish.Price.ToString("C")</p>
+            <p>
+                <strong>Average Rating:</strong>
+                @if (averageRating > 0)
+                {
+                    @($"{averageRating:F1} stars")
+                }
+                else
+                {
+                    <em>No ratings yet</em>
+                }
+            </p>
+        </div>
+    </div>
+
+    <hr />
+
+    <h4 class="mb-3">Reviews</h4>
+    @if (dish.Reviews.Any())
+    {
+        @foreach (var rev in dish.Reviews.OrderByDescending(r => r.ReviewDate))
+        {
+            <div class="border rounded p-3 mb-3 shadow-sm">
+                <p class="mb-1 fw-semibold">@rev.User?.Name <span class="text-warning"> - @rev.Rating stars</span></p>
+                <p class="mb-1">@rev.Comment</p>
+                <small class="text-muted">@rev.ReviewDate.ToShortDateString()</small>
+            </div>
+        }
+    }
+    else
+    {
+        <p><em>No reviews yet. Be the first to review!</em></p>
+    }
+
+    <hr />
+
+    <h4 class="mb-3">Add Review</h4>
+    <EditForm Model="newReview" OnValidSubmit="SubmitReview" class="needs-validation" novalidate>
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger mb-3" />
+
+        <div class="mb-3">
+            <label for="userSelect" class="form-label fw-semibold">User</label>
+            <InputSelect id="userSelect" @bind-Value="newReview.UserId" class="form-select" aria-label="Select User">
+                <option value="0" disabled>Select User</option>
+                @foreach (var u in users)
+                {
+                    <option value="@u.UserId">@u.Name</option>
+                }
+            </InputSelect>
+        </div>
+
+        <div class="mb-3">
+            <label for="ratingInput" class="form-label fw-semibold">Rating (1 to 5)</label>
+            <InputNumber id="ratingInput" class="form-control" @bind-Value="newReview.Rating" min="1" max="5" />
+        </div>
+
+        <div class="mb-3">
+            <label for="commentInput" class="form-label fw-semibold">Comment</label>
+            <InputTextArea id="commentInput" class="form-control" @bind-Value="newReview.Comment" rows="3" placeholder="Write your review here..." />
+        </div>
+
+        <button type="submit" class="btn btn-primary px-4 shadow-sm">
+            Submit
+        </button>
+    </EditForm>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    [Parameter] public int DishId { get; set; }
+    private Dish? dish;
+    private List<User> users = new();
+    private Review newReview = new();
+
+    private decimal averageRating => dish != null && dish.Reviews.Any() ? (decimal)dish.Reviews.Average(r => (double)r.Rating) : 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        dish = await DishService.GetByIdAsync(DishId);
+        users = await UserService.GetAllAsync();
+        newReview.DishId = DishId;
+        newReview.ReviewDate = DateTime.UtcNow;
+    }
+
+    private async Task SubmitReview()
+    {
+        if (newReview.UserId == 0) return;
+
+        newReview.ReviewId = 0;
+
+        await DishService.AddReviewAsync(newReview);
+
+        dish = await DishService.GetByIdAsync(DishId);
+
+        newReview = new Review
+        {
+            DishId = DishId,
+            ReviewDate = DateTime.UtcNow
+        };
+    }
+}
+

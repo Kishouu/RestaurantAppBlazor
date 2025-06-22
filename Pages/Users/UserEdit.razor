@@ -1,0 +1,124 @@
+@page "/users/edit/{UserId:int}"
+@using Restaurant.Models
+@using Restaurant.Services
+@inject UserService UserService
+@inject NavigationManager NavManager
+
+<h2 class="mb-4">@((UserId == 0) ? "Add New User" : "Edit User")</h2>
+
+<EditForm Model="user" OnValidSubmit="Save" class="needs-validation" novalidate>
+    <DataAnnotationsValidator />
+    <ValidationSummary class="text-danger" />
+
+    <div class="mb-3">
+        <label for="userName" class="form-label">Name</label>
+        <InputText id="userName" class="form-control" @bind-Value="user.Name" placeholder="Enter user name" />
+    </div>
+
+    <hr />
+
+    <h4>Addresses</h4>
+
+    @foreach (var addr in addressInputs.Select((address, index) => (address, index)))
+    {
+        <div class="address-block mb-3 p-3 border rounded bg-light position-relative">
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Remove"
+                    @onclick="() => RemoveAddressInput(addr.index)">
+            </button>
+
+            <div class="mb-2">
+                <label class="form-label">Street</label>
+                <InputText class="form-control" placeholder="Street" @bind-Value="addr.address.Street" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">City</label>
+                <InputText class="form-control" placeholder="City" @bind-Value="addr.address.City" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Postal Code</label>
+                <InputText class="form-control" placeholder="Postal Code" @bind-Value="addr.address.PostalCode" />
+            </div>
+        </div>
+    }
+
+    <button type="button" class="btn btn-outline-secondary mb-3" @onclick="AddAddressInput">
+        <i class="bi bi-plus-lg"></i> Add Address
+    </button>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-outline-secondary" @onclick="Cancel">Cancel</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter] public int UserId { get; set; }
+
+    private User user = new();
+    private List<Address> addressInputs = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserId != 0)
+        {
+            var existing = await UserService.GetByIdAsync(UserId);
+            if (existing != null)
+            {
+                user = existing;
+                addressInputs = user.Addresses.Select(a => new Address
+                {
+                    Street = a.Street,
+                    City = a.City,
+                    PostalCode = a.PostalCode
+                }).ToList();
+            }
+        }
+        else
+        {
+            addressInputs.Add(new Address());
+        }
+    }
+
+    private async Task Save()
+    {
+        bool hasValid = addressInputs.Any(a =>
+            !string.IsNullOrWhiteSpace(a.Street) &&
+            !string.IsNullOrWhiteSpace(a.City) &&
+            !string.IsNullOrWhiteSpace(a.PostalCode));
+
+        if (!hasValid)
+        {
+            // Ideally show UI validation feedback instead of Console.WriteLine
+            Console.WriteLine("At least one complete address is required.");
+            return;
+        }
+
+        user.Addresses = addressInputs
+            .Where(a => !string.IsNullOrWhiteSpace(a.Street)
+                     && !string.IsNullOrWhiteSpace(a.City)
+                     && !string.IsNullOrWhiteSpace(a.PostalCode))
+            .ToList();
+
+        await UserService.AddOrUpdateAsync(user);
+        NavManager.NavigateTo("/users");
+    }
+
+    private void AddAddressInput()
+    {
+        addressInputs.Add(new Address());
+    }
+
+    private void RemoveAddressInput(int index)
+    {
+        if (index >= 0 && index < addressInputs.Count)
+        {
+            addressInputs.RemoveAt(index);
+        }
+    }
+
+    private void Cancel()
+    {
+        NavManager.NavigateTo("/users");
+    }
+}
+

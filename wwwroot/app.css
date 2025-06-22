@@ -1,0 +1,132 @@
+/* Base font and layout */
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background-color: #f6f9fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    padding: 2rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Links and buttons */
+a, .btn-link {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn:focus, .btn:active:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, .5);
+    outline: none;
+}
+
+/* Form inputs */
+input.form-control, textarea.form-control, select.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+input.form-control:focus, textarea.form-control:focus, select.form-control:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, .25);
+    outline: none;
+}
+
+/* Validation styles */
+.valid.modified:not([type=checkbox]) {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.15rem rgba(40, 167, 69, 0.25);
+}
+
+.invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.15rem rgba(220, 53, 69, 0.25);
+}
+
+.validation-message {
+    color: #dc3545;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Cards and UI elements */
+.card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.card-body {
+    background: linear-gradient(to right, #ffffff, #f8f9fa);
+    padding: 1.5rem;
+}
+
+.card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Error boundary */
+.blazor-error-boundary {
+    background-color: #b32121;
+    color: white;
+    padding: 1rem 1rem 1rem 3.7rem;
+    border-radius: 0.5rem;
+}
+.blazor-error-boundary::after {
+    content: "An error has occurred.";
+}
+
+/* Utility */
+hr {
+    border: 0;
+    border-top: 1px solid #dee2e6;
+    margin: 1.5rem 0;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+

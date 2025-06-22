@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@inherits LayoutComponentBase
+
+<PageTitle>Restaurant</PageTitle>
+
+<div class="layout-container">
+    <aside class="sidebar shadow-sm">
+        <NavMenu />
+    </aside>
+
+    <div class="main-content">
+        <header class="layout-header">
+            <h1>Restaurant Manager</h1>
+        </header>
+
+        <main class="layout-body px-4">
+            @Body
+        </main>
+    </div>
+</div>
+
+<style>
+    .layout-container {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f6f9fc;
+    }
+
+    .sidebar {
+        width: 260px;
+        background-color: #ffffff;
+        padding: 1rem;
+        border-right: 1px solid #dee2e6;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .main-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .layout-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #dee2e6;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .layout-header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .layout-body {
+        padding: 2rem;
+    }
+
+        .sidebar {
+            width: 100%;
+            height: auto;
+            border-right: none;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .layout-header {
+            padding: 1rem;
+            text-align: center;
+        }
+    }
+</style>
+

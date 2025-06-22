@@ -1,0 +1,88 @@
+@page "/orders/{OrderId:int}"
+@inject OrderService OrderService
+
+<h2>Order Details</h2>
+
+@if (order is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="mb-3">
+        <p><strong>Order ID:</strong> @order.OrderId</p>
+        <p><strong>User:</strong> @order.User?.Name</p>
+        <p><strong>Date:</strong> @order.OrderDate.ToString("g")</p>
+        <p><strong>Status:</strong> <span class="badge bg-info">@order.Status</span></p>
+        <p><strong>Delivery:</strong> @(order.IsDelivery ? "Yes" : "No")</p>
+        @if (order.IsDelivery && order.DeliveryAddress != null)
+        {
+            <p><strong>Address:</strong> @order.DeliveryAddress.Street, @order.DeliveryAddress.City @order.DeliveryAddress.PostalCode</p>
+        }
+    </div>
+
+    <table class="table table-sm table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Dish</th>
+                <th style="width: 70px;">Qty</th>
+                <th style="width: 100px;">Unit Price</th>
+                <th style="width: 100px;">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in order.Items)
+            {
+                <tr>
+                    <td>@item.Dish?.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("C")</td>
+                    <td>@item.LineTotal.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="mb-3">
+        <p><strong>Delivery Fee:</strong> @order.DeliveryFee.ToString("C")</p>
+        <p><strong>Total Price:</strong> @order.TotalPrice.ToString("C")</p>
+    </div>
+
+    <hr />
+
+    <h4>Update Status</h4>
+    <div class="btn-group" role="group" aria-label="Order status update buttons">
+        @foreach (OrderStatus s in Enum.GetValues(typeof(OrderStatus)))
+        {
+            if (s != order.Status)
+            {
+                <button class="btn btn-sm btn-outline-primary" @onclick="() => ChangeStatus(s)">@s</button>
+            }
+            else
+            {
+                <button class="btn btn-sm btn-primary" disabled>@s</button>
+            }
+        }
+    </div>
+}
+@code {
+    [Parameter]
+    public int OrderId { get; set; }
+
+    private Order? order;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        order = await OrderService.GetByIdAsync(OrderId);
+    }
+
+    private async Task ChangeStatus(OrderStatus newStatus)
+    {
+        if (order is null) return;
+
+        await OrderService.UpdateStatusAsync(order.OrderId, newStatus);
+        order = await OrderService.GetByIdAsync(OrderId);
+        StateHasChanged();
+    }
+}
+

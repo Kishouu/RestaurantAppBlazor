@@ -1,0 +1,53 @@
+﻿<nav class="nav-menu">
+    <a class="nav-item" href="/">
+        <span class="icon">🏠</span> Home
+    </a>
+    <a class="nav-item" href="/dishes">
+        <span class="icon">🍽️</span> Dishes
+    </a>
+    <a class="nav-item" href="/orders">
+        <span class="icon">🧾</span> Orders
+    </a>
+    <a class="nav-item" href="/users">
+        <span class="icon">👥</span> Users
+    </a>
+    <a class="nav-item" href="/gallery">
+        <span class="icon">🖼️</span> Gallery
+    </a>
+</nav>
+
+<style>
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .nav-item:hover {
+        background-color: #f0f4f8;
+        color: #1b6ec2;
+    }
+
+    .nav-item .icon {
+        margin-right: 0.75rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-item.active {
+        background-color: #e6f0ff;
+        color: #1b6ec2;
+        font-weight: 600;
+    }
+</style>
+
