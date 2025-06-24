@@ -39,14 +39,26 @@ namespace Restaurant.Services
             await context.SaveChangesAsync(); 
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAddressAsync(int addressId)
         {
             using var context = _factory.CreateDbContext();
-            var user = new User { UserId = id };
-            context.Users.Attach(user);
-            context.Users.Remove(user);
-            await context.SaveChangesAsync();
-        }
+
+            bool isUsed = await context.Orders.AnyAsync(o => o.DeliveryAddressId == addressId);
+        if (isUsed)
+            {
+        throw new InvalidOperationException("Cannot delete address because it is used in one or more orders.");
+            }
+
+            var address = await context.Addresses.FindAsync(addressId);
+            if (address != null)
+    {
+        context.Addresses.Remove(address);
+        await context.SaveChangesAsync();
+    }
+}
+
+
+
 
         public async Task AddAddressAsync(int userId, Address address)
         {

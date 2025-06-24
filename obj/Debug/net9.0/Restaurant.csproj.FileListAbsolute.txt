@@ -26,7 +26,6 @@
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.RazorAssemblyInfo.cache
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.RazorAssemblyInfo.cs
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/scopedcss/bundle/Restaurant.styles.css
-/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/d88noqxycz-bqjiyaj88i.gz
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/qnxhr0uxju-c2jlpeoesf.gz
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/u7c1x6uhsx-erw9l3u2r3.gz
@@ -86,3 +85,5 @@
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.pdb
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.genruntimeconfig.cache
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/ref/Restaurant.dll
+/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.sourcelink.json
+/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz

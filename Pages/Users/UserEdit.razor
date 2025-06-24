@@ -1,8 +1,10 @@
 @page "/users/edit/{UserId:int}"
 @using Restaurant.Models
 @using Restaurant.Services
+@using Microsoft.JSInterop
 @inject UserService UserService
 @inject NavigationManager NavManager
+@inject IJSRuntime JSRuntime
 
 <h2 class="mb-4">@((UserId == 0) ? "Add New User" : "Edit User")</h2>
 
@@ -22,8 +24,9 @@
     @foreach (var addr in addressInputs.Select((address, index) => (address, index)))
     {
         <div class="address-block mb-3 p-3 border rounded bg-light position-relative">
-            <button type="button" class="btn-close position-absolute top-0 end-0 m-2" aria-label="Remove"
-                    @onclick="() => RemoveAddressInput(addr.index)">
+            <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2"
+                    @onclick="() => ConfirmRemoveAddress(addr.index)">
+                Delete
             </button>
 
             <div class="mb-2">
@@ -67,6 +70,7 @@
                 user = existing;
                 addressInputs = user.Addresses.Select(a => new Address
                 {
+                    AddressId = a.AddressId,  // Keep AddressId to track DB records for delete
                     Street = a.Street,
                     City = a.City,
                     PostalCode = a.PostalCode
@@ -75,12 +79,14 @@
         }
         else
         {
+            // New user: start with one empty address input
             addressInputs.Add(new Address());
         }
     }
 
     private async Task Save()
     {
+        // Validate at least one complete address
         bool hasValid = addressInputs.Any(a =>
             !string.IsNullOrWhiteSpace(a.Street) &&
             !string.IsNullOrWhiteSpace(a.City) &&
@@ -88,18 +94,22 @@
 
         if (!hasValid)
         {
-            // Ideally show UI validation feedback instead of Console.WriteLine
+            // Show message or use validation summary (can be improved to show UI feedback)
             Console.WriteLine("At least one complete address is required.");
             return;
         }
 
+        // Assign filtered addresses to user entity
         user.Addresses = addressInputs
             .Where(a => !string.IsNullOrWhiteSpace(a.Street)
                      && !string.IsNullOrWhiteSpace(a.City)
                      && !string.IsNullOrWhiteSpace(a.PostalCode))
             .ToList();
 
+        // Save user with updated addresses (including new/edited)
         await UserService.AddOrUpdateAsync(user);
+
+        // Navigate back to users list after save
         NavManager.NavigateTo("/users");
     }
 
@@ -108,11 +118,41 @@
         addressInputs.Add(new Address());
     }
 
-    private void RemoveAddressInput(int index)
+    private async Task RemoveAddressInput(int index)
+{
+    if (index >= 0 && index < addressInputs.Count)
     {
-        if (index >= 0 && index < addressInputs.Count)
+        var addrToDelete = addressInputs[index];
+        if (addrToDelete.AddressId != 0)
+        {
+            try
+            {
+                await UserService.DeleteAddressAsync(addrToDelete.AddressId);
+                addressInputs.RemoveAt(index);
+            }
+            catch (InvalidOperationException ex)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                await JSRuntime.InvokeVoidAsync("alert", "Error deleting address: " + ex.Message);
+            }
+        }
+        else
         {
             addressInputs.RemoveAt(index);
+        }
+    }
+}
+
+    private async Task ConfirmRemoveAddress(int index)
+    {
+        bool confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Delete this address?");
+        if (confirmed)
+        {
+            await RemoveAddressInput(index);
+            StateHasChanged();
         }
     }
 
@@ -121,4 +161,3 @@
         NavManager.NavigateTo("/users");
     }
 }
-

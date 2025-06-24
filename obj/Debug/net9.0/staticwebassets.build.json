@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Aa8ayR7zC81Pv60Pwg6iEiDqSMXKLG03wq1Ua+T+cN0=",
+  "Hash": "lOXhTD6x2MIB5XMhrAT3PYX9wdTCM+gCuDIuKEq8rSw=",
   "Source": "Restaurant",
   "BasePath": "_content/Restaurant",
   "Mode": "Default",
@@ -920,12 +920,12 @@
       "OriginalItemSpec": "/home/sviatoslav/Projects/Restaurant/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map"
     },
     {
-      "Identity": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz",
+      "Identity": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz",
       "SourceId": "Restaurant",
       "SourceType": "Discovered",
       "ContentRoot": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/Restaurant",
-      "RelativePath": "app#[.{fingerprint=bfjun99a3z}]?.css.gz",
+      "RelativePath": "app#[.{fingerprint=3imklmd2i9}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -934,8 +934,8 @@
       "RelatedAsset": "/home/sviatoslav/Projects/Restaurant/wwwroot/app.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ygu5okzcui",
-      "Integrity": "fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk=",
+      "Fingerprint": "gewge5cqie",
+      "Integrity": "CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/home/sviatoslav/Projects/Restaurant/wwwroot/app.css"
@@ -976,8 +976,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "bfjun99a3z",
-      "Integrity": "1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I=",
+      "Fingerprint": "3imklmd2i9",
+      "Integrity": "60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/app.css"
@@ -1972,13 +1972,13 @@
   ],
   "Endpoints": [
     {
-      "Route": "app.bfjun99a3z.css",
-      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz",
+      "Route": "app.3imklmd2i9.css",
+      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001082251082"
+          "Quality": "0.000821018062"
         }
       ],
       "ResponseHeaders": [
@@ -1988,15 +1988,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "923"
+          "Value": "1217"
         },
         {
           "Name": "ETag",
-          "Value": "\"fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk=\""
+          "Value": "\"CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2016,13 +2016,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I=\""
+          "Value": "W/\"60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bfjun99a3z"
+          "Value": "3imklmd2i9"
         },
         {
           "Name": "label",
@@ -2030,12 +2030,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I="
+          "Value": "sha256-60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q="
         }
       ]
     },
     {
-      "Route": "app.bfjun99a3z.css",
+      "Route": "app.3imklmd2i9.css",
       "AssetFile": "/home/sviatoslav/Projects/Restaurant/wwwroot/app.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2045,7 +2045,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2412"
+          "Value": "3383"
         },
         {
           "Name": "Content-Type",
@@ -2053,11 +2053,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I=\""
+          "Value": "\"60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2067,7 +2067,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bfjun99a3z"
+          "Value": "3imklmd2i9"
         },
         {
           "Name": "label",
@@ -2075,13 +2075,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I="
+          "Value": "sha256-60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q="
         }
       ]
     },
     {
-      "Route": "app.bfjun99a3z.css.gz",
-      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz",
+      "Route": "app.3imklmd2i9.css.gz",
+      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2090,7 +2090,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "923"
+          "Value": "1217"
         },
         {
           "Name": "Content-Type",
@@ -2098,11 +2098,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk=\""
+          "Value": "\"CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2120,7 +2120,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "bfjun99a3z"
+          "Value": "3imklmd2i9"
         },
         {
           "Name": "label",
@@ -2128,18 +2128,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk="
+          "Value": "sha256-CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0="
         }
       ]
     },
     {
       "Route": "app.css",
-      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz",
+      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001082251082"
+          "Quality": "0.000821018062"
         }
       ],
       "ResponseHeaders": [
@@ -2149,15 +2149,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "923"
+          "Value": "1217"
         },
         {
           "Name": "ETag",
-          "Value": "\"fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk=\""
+          "Value": "\"CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2177,13 +2177,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I=\""
+          "Value": "W/\"60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I="
+          "Value": "sha256-60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q="
         }
       ]
     },
@@ -2198,7 +2198,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2412"
+          "Value": "3383"
         },
         {
           "Name": "Content-Type",
@@ -2206,11 +2206,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I=\""
+          "Value": "\"60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2220,13 +2220,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1wiI9OL0zWQ0jKGvx+EqyGEEdyokfvBeeOU3jHUEi1I="
+          "Value": "sha256-60up77n9X/ITeF9KRxWWiPCURuHzya5L09MrM7pN8/Q="
         }
       ]
     },
     {
       "Route": "app.css.gz",
-      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-bfjun99a3z.gz",
+      "AssetFile": "/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2235,7 +2235,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "923"
+          "Value": "1217"
         },
         {
           "Name": "Content-Type",
@@ -2243,11 +2243,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk=\""
+          "Value": "\"CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Jun 2025 13:26:40 GMT"
+          "Value": "Tue, 24 Jun 2025 14:18:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2265,7 +2265,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-fr4/uyuRKyKc5uzShnRRxJeRhnalixjDB4gK4MbX+Fk="
+          "Value": "sha256-CEopjcq5/twcC1DHHP5SjJhALpuPTY59FSEdvJI99M0="
         }
       ]
     },
