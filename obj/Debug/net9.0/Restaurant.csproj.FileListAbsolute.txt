@@ -86,4 +86,4 @@
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.genruntimeconfig.cache
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/ref/Restaurant.dll
 /home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/Restaurant.sourcelink.json
-/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3imklmd2i9.gz
+/home/sviatoslav/Projects/Restaurant/obj/Debug/net9.0/compressed/zsay0qjzid-3dokyrsw4b.gz
